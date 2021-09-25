@@ -1,0 +1,44 @@
+header {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+header img {
+    height: auto;
+    width: 300px;
+}
+
+.searchSection {
+    display: flex;
+    justify-content: center;
+}
+
+.mainSearch {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    margin-bottom: 20px;
+}
+
+.bi-search {
+    position: relative;
+    right: 30px;
+    top: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.zoneDropdown {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-color: yellow; */
+    margin: 0 10%;
+}
+
+.dropdown {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
