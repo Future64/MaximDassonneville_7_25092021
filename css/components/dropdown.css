@@ -1,0 +1,60 @@
+.zoneDropdown {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 10%;
+}
+
+.dropdown {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    width: 140px;
+    height: 50px;
+}
+
+.dropdownGreen {
+    background-color: yellowgreen;
+}
+
+.dropdownOrange {
+    background-color: salmon;
+}
+
+.dropFirst {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 5px 5px 5px;
+}
+
+.dropFirst p {
+    color: white;
+    font-weight: bold;
+}
+
+.bi-chevron-down {
+    color: white;
+    font-size: 20px;
+}
+
+.inputInDropdown {
+    /* display: none; */
+    position: absolute;
+    z-index: 10;
+    width: 100px;
+    margin-bottom: 8px;
+    /* left: 65px; */
+    right: 33px;
+    background-color: yellowgreen;
+    border: none;
+}
+
+.arrowClose {
+    transform: rotate(0deg);
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+}

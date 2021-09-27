@@ -1,0 +1,26 @@
+.searchSection {
+    display: flex;
+    justify-content: center;
+}
+
+.mainSearch {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    margin-bottom: 20px;
+}
+
+.inputSearch {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 50px;
+}
+
+.bi-search {
+    position: relative;
+    right: 30px;
+    top: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
