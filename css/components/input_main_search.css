@@ -10,6 +10,10 @@
     margin-bottom: 20px;
 }
 
+::placeholder {
+    margin-right: 20px;
+}
+
 .inputSearch {
     overflow: hidden;
     text-overflow: ellipsis;

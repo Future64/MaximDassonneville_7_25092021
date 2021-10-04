@@ -14,6 +14,32 @@
     height: 50px;
 }
 
+.optionContainer {
+    position: relative;
+    top: -9px;
+    left: -6px;
+    width: 140px;
+    border-radius: 0 0 5px 5px;
+    padding-bottom: 10px;
+}
+
+.optionContainer p {
+    color: white;
+}
+
+
+/* dropdownGreen .optionContainer {
+    background-color: success;
+} */
+
+.dropdownOrange .optionContainer {
+    background-color: salmon;
+}
+
+.dropdownGreen .optionContainer {
+    background-color: yellowgreen;
+}
+
 .dropdownGreen {
     background-color: yellowgreen;
 }
