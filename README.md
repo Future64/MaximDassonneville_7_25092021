@@ -1,7 +1,7 @@
 #OpenClassrooms Projet 7 
 ------------------------- 
   
-![Les petits plats(https://user.oc-static.com/upload/2020/08/14/15973932905401_logo%20%281%29.png)]  
+![Les petits plats](https://user.oc-static.com/upload/2020/08/14/15973932905401_logo%20%281%29.png)  
   
 
 ##Développez un algorithme de recherche en JavaScript  
