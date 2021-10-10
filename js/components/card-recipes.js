@@ -1,5 +1,5 @@
 import { recipes } from "../recipes.js"
-import { createDomElement, closeWindow, launch, displayDropdown } from "../tools.js"
+import { createDomElement } from "../tools.js"
 
 
 for (let i = 0; i < recipes.length; i++) {

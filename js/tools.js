@@ -20,22 +20,7 @@ export const closeWindow = (elt) => {
 
 // Fonction qui permet d'ouvrir une fenêtre
 export const launch = (elt) => {
-    elt.style.display = 'block'
-}
-
-/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
-
-// Fontion qui replie et déplie et affiche les fleches down et up si le dropdown est ouvert ou fermé
-export const displayDropdown = (dropdownContent, spanArrowUp, spanArrowDown) => {
-    if (dropdownContent.style.display === 'none') {
-        launch(dropdownContent)
-        launch(spanArrowUp)
-        closeWindow(spanArrowDown)
-    } else {
-        closeWindow(dropdownContent)
-        closeWindow(spanArrowUp)
-        launch(spanArrowDown)
-    }
+    elt.style.display = 'flex'
 }
 
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/

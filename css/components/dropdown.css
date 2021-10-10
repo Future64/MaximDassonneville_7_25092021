@@ -1,3 +1,7 @@
+.displayNone {
+    display: none;
+}
+
 .zoneDropdown {
     display: flex;
     flex-direction: row;
@@ -10,21 +14,48 @@
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    width: 140px;
+    width: 170px;
     height: 50px;
+}
+
+
+/* .dropdownIngredients{
+background-color: primary;
+} */
+
+.dropdownGreen,
+.dropdownAppliance {
+    background-color: yellowgreen;
+}
+
+.dropdownSalmon,
+.dropdownUstensil {
+    background-color: salmon;
 }
 
 .optionContainer {
     position: relative;
+    /* display: none; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    z-index: 10;
     top: -9px;
-    left: -6px;
-    width: 140px;
+    left: 0px;
+    width: 170px;
     border-radius: 0 0 5px 5px;
     padding-bottom: 10px;
 }
 
 .optionContainer p {
     color: white;
+    padding-left: 10px;
+}
+
+.ingredient,
+.appliance,
+.ustensil {
+    font-size: 14px;
+    margin-right: 60px;
 }
 
 
