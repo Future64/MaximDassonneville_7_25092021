@@ -39,10 +39,12 @@
 
 .titleTimeCard {
     justify-content: space-between;
+    margin-bottom: 0;
 }
 
-.timeCard p {
+.time {
     font-weight: bold;
+    min-width: 55px;
 }
 
 .bi-clock {
@@ -51,15 +53,30 @@
 
 .ingredientsCard {
     width: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 110px;
 }
 
 .ingredientsCard p {
     margin-bottom: 0;
-    font-size: 12px;
+    font-size: 10px;
+}
+
+.cardResume {
+    position: relative;
+    right: -19px;
+    max-width: 210px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 110px;
 }
 
 .cardResume p {
-    font-size: 12px;
+    /* display: block; */
+    font-size: 10px;
+    text-overflow: ellipsis;
+    max-height: 140px;
 }
 
 .cardImg {

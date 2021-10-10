@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/root/init.css">
     <link rel="stylesheet" href="/css/layout/mainPage.css">
     <link rel="stylesheet" href="/css/components/header.css">
+    <link rel="stylesheet" href="/css/components/footer.css">
     <link rel="stylesheet" href="/css/components/input_main_search.css">
     <link rel="stylesheet" href="/css/components/dropdown.css">
     <link rel="stylesheet" href="/css/components/cards.css">
@@ -36,7 +37,7 @@
             </form>
             <div class="zoneDropdown">
                 <div class="selectContainer">
-                    <button role="button" aria-haspopup="listbox" aria-expanded class="dropdown dropdownBlue bg-primary" name="sort_by" id="sort_by">
+                    <div role="button" aria-haspopup="listbox" aria-expanded class="dropdown dropdownBlue bg-primary" name="sort_by" id="sort_by">
                         <div class="dropFirst">
                             <p>Ingredients</p>
                             <input type="text" class="inputInDropdown displayNone">
@@ -53,7 +54,7 @@
                             <div tabindex="0" class="option Date" data-value="Date">Date</div>
                             <div tabindex="0" class="option Titre" data-value="Titre">Titre</div>
                         </div> -->
-                    </button>
+                    </div>
                 </div>
 
                 <div class="selectContainer">
@@ -97,93 +98,15 @@
             </div>
         </section>
         <section class="sectionCards">
-            <div class="zoneCards">
-                <div class="cardContainer">
-                    <div class="cardImg bg-secondary"></div>
-                    <div class="cardBox bg-light">
-                        <div class="bodyCard bg-light">
-                            <div class="titleTimeCard">
-                                <p>titre de la card</p>
-                                <div class="timeCard">
-                                    <i class="bi bi-clock"></i>
-                                    <p>10 min</p>
-                                </div>
-                            </div>
-                            <div class="recetteCard">
-                                <div class="ingredientsCard">
-                                    <p>Lait de coco: 400ml</p>
-                                    <p>Jus de citron: 2</p>
-                                    <p>Créme de coc: 4 cuillères </p>
-                                    <p>Sucre: 20g</p>
-                                    <p>Glaçons: 2</p>
-                                </div>
-                                <div class="cardResume">
-                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cardContainer">
-                    <div class="cardImg bg-secondary"></div>
-                    <div class="cardBox bg-light">
-                        <div class="bodyCard bg-light">
-                            <div class="titleTimeCard">
-                                <p>titre de la card</p>
-                                <div class="timeCard">
-                                    <i class="bi bi-clock"></i>
-                                    <p>10 min</p>
-                                </div>
-                            </div>
-                            <div class="recetteCard">
-                                <div class="ingredientsCard">
-                                    <p>Lait de coco: 400ml</p>
-                                    <p>Jus de citron: 2</p>
-                                    <p>Créme de coc: 4 cuillères </p>
-                                    <p>Sucre: 20g</p>
-                                    <p>Glaçons: 2</p>
-                                </div>
-                                <div class="cardResume">
-                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cardContainer">
-                    <div class="cardImg bg-secondary"></div>
-                    <div class="cardBox bg-light">
-                        <div class="bodyCard bg-light">
-                            <div class="titleTimeCard">
-                                <p>titre de la card</p>
-                                <div class="timeCard">
-                                    <i class="bi bi-clock"></i>
-                                    <p>10 min</p>
-                                </div>
-                            </div>
-                            <div class="recetteCard">
-                                <div class="ingredientsCard">
-                                    <p>Lait de coco: 400ml</p>
-                                    <p>Jus de citron: 2</p>
-                                    <p>Créme de coc: 4 cuillères </p>
-                                    <p>Sucre: 20g</p>
-                                    <p>Glaçons: 2</p>
-                                </div>
-                                <div class="cardResume">
-                                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="zoneCards"></div>
         </section>
+        <footer></footer>
     </main>
+    <script src="/js/recipes.js" type="module"></script>
+    <script src="/js/tools.js" type="module"></script>
     <script src="/js/app.js" type="module"></script>
     <script src="/js/components/dropdown.js" type="module"></script>
-    <script src="/js/recipes.js" type="module"></script>
+    <script src="/js/components/card-recipes.js" type="module"></script>
 </body>
 
 </html>
