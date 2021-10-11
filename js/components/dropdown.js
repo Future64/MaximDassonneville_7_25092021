@@ -14,8 +14,10 @@ const createDropdown = (name1, name2, name3) => {
     return zoneDropdown.innerHTML = `  <div class="selectContainer">
                                             <div role="button" aria-haspopup="listbox" aria-expanded class="dropdown dropdownBlue bg-primary" name="sort_by" id="sort_by">
                                                 <div class="dropFirst">
-                                                    <p class="name1">${name1}</p>
-                                                    <input type="text" class="inputInDropdownBlue displayNone">
+                                                    <label for="inputInDropdownBlue">
+                                                        <p class="name1">${name1}</p>
+                                                    </label>
+                                                    <input type="text" class="inputInDropdownBlue displayNone" id="inputInDropdownBlue">
                                                     <i class="bi bi-chevron-down arrowClose"></i>
                                                 </div>
                                                 <div class="optionContainer bg-primary dropdownIngredients displayNone" role="listbox"></div>
@@ -24,7 +26,9 @@ const createDropdown = (name1, name2, name3) => {
                                         <div class="selectContainer">
                                             <div role="button" aria-haspopup="listbox" aria-expanded class="dropdown dropdownGreen " name="sort_by" id="sort_by">
                                                 <div class="dropFirst">
-                                                    <p class="name2">${name2}</p>
+                                                    <label for="inputInDropdownGreen">
+                                                        <p class="name2">${name2}</p>
+                                                    </label>
                                                     <input type="text" class="inputInDropdownGreen displayNone">
                                                     <i class="bi bi-chevron-down arrowClose"></i>
                                                 </div>
@@ -34,7 +38,9 @@ const createDropdown = (name1, name2, name3) => {
                                         <div class="selectContainer">
                                             <div role="button" aria-haspopup="listbox" aria-expanded class="dropdown dropdownSalmon " name="sort_by" id="sort_by">
                                                 <div class="dropFirst">
-                                                    <p class="name3">${name3}</p>
+                                                    <label for="inputInDropdownSalmon">
+                                                        <p class="name3">${name3}</p>
+                                                    </label>
                                                     <input type="text" class="inputInDropdownSalmon displayNone">
                                                     <i class="bi bi-chevron-down arrowClose"></i>
                                                 </div>
@@ -103,6 +109,7 @@ const eventDropdown = (dropdownBlue, dropdownIng, inputInDropdownBlue, name1) =>
         if (inputInDropdownBlue.classList.contains("displayNone")) {
             inputInDropdownBlue.classList.remove('displayNone')
             inputInDropdownBlue.classList.add('displayBlock')
+            inputInDropdownBlue.focus()
         } else {
             inputInDropdownBlue.classList.remove('displayBlock')
             inputInDropdownBlue.classList.add('displayNone')
