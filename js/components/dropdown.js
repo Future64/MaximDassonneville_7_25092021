@@ -1,16 +1,16 @@
-import { createDomElement } from "../tools.js"
-import { listUstansils, listIngredients, listAppliance } from "../app.js"
+import { createDomElement } from "../utils/tools.js"
+import { listUstansils, listIngredients, listAppliance } from "../../data/dataHandler.js"
 
-const zoneDropdown = document.querySelector(".zoneDropdown")
-const arrowInput = document.querySelectorAll(".bi-chevron-down")
+export const zoneDropdown = document.querySelector(".zoneDropdown")
+export const arrowInput = document.querySelectorAll(".bi-chevron-down")
 
 // Nom des dropdowns
-const dropdownIngredients = "Ingredients"
-const dropdownAppareil = "Appareil"
-const dropdownUstensiles = "Ustensiles"
+export const dropdownIngredients = "Ingredients"
+export const dropdownAppareil = "Appareil"
+export const dropdownUstensiles = "Ustensiles"
 
 // Creation des dropdowns
-const createDropdown = (name1, name2, name3) => {
+export const createDropdown = (name1, name2, name3) => {
     return zoneDropdown.innerHTML = `  <div class="selectContainer">
                                             <div role="button" aria-haspopup="listbox" aria-expanded class="dropdown dropdownBlue bg-primary" name="sort_by" id="sort_by">
                                                 <div class="dropFirst">
@@ -52,48 +52,44 @@ const createDropdown = (name1, name2, name3) => {
 
 createDropdown(dropdownIngredients, dropdownAppareil, dropdownUstensiles)
 
-//Intégrations des ingrédients dans le dropdown
-for (let i = 0; i < listIngredients.length; i++) {
-    let ingredient = createDomElement("ingredient", "p")
-    const dropdownIngredients = document.querySelector(".dropdownIngredients")
-    ingredient.innerHTML = listIngredients[i]
-    dropdownIngredients.append(ingredient)
+//Intégrations des datas dans le dropdown
+export const dataInDropdown = (nameElm, balise, classe, data) => {
+    for (let i = 0; i < data.length; i++) {
+        const createElm = createDomElement(nameElm, balise)
+        const classeElm = document.querySelector("." + classe)
+        createElm.innerHTML = data[i]
+        classeElm.append(createElm)
+    }
 }
+
+//Intégrations des ingrédients dans le dropdown
+dataInDropdown("ingredient", "p", "dropdownIngredients", listIngredients)
 
 //Intégrations des appareils dans le dropdown
-for (let i = 0; i < listAppliance.length; i++) {
-    let appliance = createDomElement("appliance", "p")
-    const dropdownAppliance = document.querySelector(".dropdownAppliance")
-    appliance.innerHTML = listAppliance[i]
-    dropdownAppliance.append(appliance)
-}
+dataInDropdown("appliance", "p", "dropdownAppliance", listAppliance)
 
 //Intégrations des ustensils dans le dropdown
-for (let i = 0; i < listUstansils.length; i++) {
-    let ustensil = createDomElement("ustensil", "p")
-    const dropdownUstensil = document.querySelector(".dropdownUstensil")
-    ustensil.innerHTML = listUstansils[i]
-    dropdownUstensil.append(ustensil)
-}
+dataInDropdown("ustensil", "p", "dropdownUstensil", listUstansils)
+
 
 
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 /*                          EVENTS                                     */
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
-const dropdownBlue = document.querySelector(".dropdownBlue")
-const dropdownIng = document.querySelector(".dropdownIngredients")
-const dropdownGreen = document.querySelector(".dropdownGreen")
-const dropApp = document.querySelector(".dropdownAppliance")
-const dropdownSalmon = document.querySelector(".dropdownSalmon")
-const dropdownUst = document.querySelector(".dropdownUstensil")
-const inputInDropdownBlue = document.querySelector(".inputInDropdownBlue")
-const inputInDropdownGreen = document.querySelector(".inputInDropdownGreen")
-const inputInDropdownSalmon = document.querySelector(".inputInDropdownSalmon")
-const name1 = document.querySelector(".name1")
-const name2 = document.querySelector(".name2")
-const name3 = document.querySelector(".name3")
+export const dropdownBlue = document.querySelector(".dropdownBlue")
+export const dropdownIng = document.querySelector(".dropdownIngredients")
+export const dropdownGreen = document.querySelector(".dropdownGreen")
+export const dropApp = document.querySelector(".dropdownAppliance")
+export const dropdownSalmon = document.querySelector(".dropdownSalmon")
+export const dropdownUst = document.querySelector(".dropdownUstensil")
+export const inputInDropdownBlue = document.querySelector(".inputInDropdownBlue")
+export const inputInDropdownGreen = document.querySelector(".inputInDropdownGreen")
+export const inputInDropdownSalmon = document.querySelector(".inputInDropdownSalmon")
+export const name1 = document.querySelector(".name1")
+export const name2 = document.querySelector(".name2")
+export const name3 = document.querySelector(".name3")
 
-const eventDropdown = (dropdownBlue, dropdownIng, inputInDropdownBlue, name1) => {
+export const eventDropdown = (dropdownBlue, dropdownIng, inputInDropdownBlue, name1) => {
     dropdownBlue.addEventListener('click', (e) => {
         console.log(e.target);
         if (dropdownIng.classList.contains("displayNone")) {
