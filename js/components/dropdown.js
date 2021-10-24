@@ -1,5 +1,7 @@
 import { createDomElement } from "../utils/tools.js"
 import { listUstansils, listIngredients, listAppliance } from "../../data/dataHandler.js"
+import { ingredientBox } from "../components/ingredientsDropdown.js"
+
 
 export const zoneDropdown = document.querySelector(".zoneDropdown")
 export const arrowInput = document.querySelectorAll(".bi-chevron-down")
@@ -57,25 +59,21 @@ export const dataInDropdown = (nameElm, balise, classe, data) => {
     for (let i = 0; i < data.length; i++) {
         const createElm = createDomElement(nameElm, balise)
         const classeElm = document.querySelector("." + classe)
+        const displayNone = document.querySelector(".displayNone")
+        const displayBlock = document.querySelector(".displayBlock")
+            // if (displayBlock == null) {
+            //     classeElm.remove(createElm)
+            // }
         createElm.innerHTML = data[i]
         classeElm.append(createElm)
     }
 }
 
-//Intégrations des ingrédients dans le dropdown
-dataInDropdown("ingredient", "p", "dropdownIngredients", listIngredients)
-
-//Intégrations des appareils dans le dropdown
-dataInDropdown("appliance", "p", "dropdownAppliance", listAppliance)
-
-//Intégrations des ustensils dans le dropdown
-dataInDropdown("ustensil", "p", "dropdownUstensil", listUstansils)
-
-
 
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 /*                          EVENTS                                     */
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
+
 export const dropdownBlue = document.querySelector(".dropdownBlue")
 export const dropdownIng = document.querySelector(".dropdownIngredients")
 export const dropdownGreen = document.querySelector(".dropdownGreen")
