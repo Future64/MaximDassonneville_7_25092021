@@ -6,15 +6,15 @@ import { createCardsForDom } from "../components/card-recipes.js"
 
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 
-const displayNone = document.querySelector(".displayNone")
-const displayBlock = document.querySelector(".displayBlock")
-const elm = document.querySelector(".ingredient")
+const elms = document.querySelectorAll(".ingredient")
 
 export let ingredientBox = []
+export let ingredientSelected = []
 
 const pushInTheBox = (word, input, box) => {
     if (!word.indexOf(input.value)) {
         box.push(word)
+
     }
 }
 
@@ -27,8 +27,6 @@ dropdownBlue.addEventListener('input', () => {
         listIngredients.forEach((ingredient) => {
             pushInTheBox(ingredient, inputInDropdownBlue, ingredientBox)
         })
-        console.log(ingredientBox);
-        dataInDropdown("ingredient", "p", "dropdownIngredients", ingredientBox)
-
     }
+    dataInDropdown("ingredient", "p", "dropdownIngredients", ingredientBox)
 });

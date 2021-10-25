@@ -6,10 +6,13 @@ import { ingredientBox } from "../components/ingredientsDropdown.js"
 export const zoneDropdown = document.querySelector(".zoneDropdown")
 export const arrowInput = document.querySelectorAll(".bi-chevron-down")
 
+
 // Nom des dropdowns
 export const dropdownIngredients = "Ingredients"
 export const dropdownAppareil = "Appareil"
 export const dropdownUstensiles = "Ustensiles"
+
+
 
 // Creation des dropdowns
 export const createDropdown = (name1, name2, name3) => {
@@ -61,11 +64,13 @@ export const dataInDropdown = (nameElm, balise, classe, data) => {
         const classeElm = document.querySelector("." + classe)
         const displayNone = document.querySelector(".displayNone")
         const displayBlock = document.querySelector(".displayBlock")
-            // if (displayBlock == null) {
-            //     classeElm.remove(createElm)
-            // }
+        const optionContainer = document.querySelector(".optionContainer")
+
+        createElm.setAttribute("id", data[i])
         createElm.innerHTML = data[i]
         classeElm.append(createElm)
+        console.log(optionContainer.contains(createElm));
+
     }
 }
 
@@ -89,7 +94,7 @@ export const name3 = document.querySelector(".name3")
 
 export const eventDropdown = (dropdownBlue, dropdownIng, inputInDropdownBlue, name1) => {
     dropdownBlue.addEventListener('click', (e) => {
-        console.log(e.target);
+        // console.log(e.target);
         if (dropdownIng.classList.contains("displayNone")) {
             dropdownIng.classList.remove('displayNone')
             dropdownIng.classList.add('displayBlock')
