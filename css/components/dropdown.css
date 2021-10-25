@@ -19,17 +19,15 @@
 }
 
 
-/* .dropdownIngredients{
-background-color: primary;
-} */
+.dropdown--ingredients{
+    background-color: rgb(44, 152, 214);
+}
 
-.dropdownGreen,
-.dropdownAppliance {
+.dropdown--appareil {
     background-color: yellowgreen;
 }
 
-.dropdownSalmon,
-.dropdownUstensil {
+.dropdown--ustensiles {
     background-color: salmon;
 }
 
