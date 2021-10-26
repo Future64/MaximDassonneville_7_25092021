@@ -1,38 +1,41 @@
 // import { createDomElement } from "../utils/tools.js"
 import { DATA } from "../../data/dataHandler.js"
-import { removeDuplicateItemInArray } from "../utils/tools.js"
+import { removeDuplicateItemInArray, displayContentsDropdown, displayIngrediantDataIfTrue } from "../utils/tools.js"
+import { createTag } from "../components/view/tag.js"
 
+const ingredientInDom = document.querySelectorAll("p")
+    // console.log(ingredientInDom);
 
 export const dropDownIngredientsListener = () => {
     const dropdownContainer = document.querySelector('.dropdown--ingredients')
     const input = document.querySelector('#inputInDropdownBlue')
     const optionContainer = dropdownContainer.querySelector('.optionContainer')
-    
+    const dropdown = document.querySelector('.dropdown')
+    const arrow = dropdownContainer.querySelector('.bi-chevron-down')
+    const zoneTag = document.querySelector('.zoneTag')
+
 
     // ===================
     //      AU CLICK
     // ===================
     dropdownContainer.addEventListener('click', () => {
-        input.classList.remove('displayNone')
-        const ingredients = [];
+        const ingred = [];
 
         // on récupère tous les ingrédients des uniquement recettes qui sont en display = true
-        DATA.forEach(recipe => {
-            if (recipe.display == true) {
-                recipe.ingredients.forEach(el => {
-                    ingredients.push(el.ingredient)
-                });
-            }
-        });
+        displayIngrediantDataIfTrue(DATA, ingred)
+
         // on retire les doublons
-        const filteredArray = removeDuplicateItemInArray(ingredients)
-        // on le remplie l'optionContainer
+        const filteredArray = removeDuplicateItemInArray(ingred)
+            // on le remplie l'optionContainer
         filteredArray.forEach(ingredient => {
             optionContainer.innerHTML += `<p>${ingredient}</p>`
         });
+
         // on affiche l'optionContainer
-        optionContainer.classList.remove('displayNone')
+        displayContentsDropdown(optionContainer, input, arrow, dropdown)
     })
+
+
 
 
     // ===================
@@ -42,18 +45,14 @@ export const dropDownIngredientsListener = () => {
         // Si il y a plus de 2 caractères
         if (input.value.length > 2) {
             const taping = input.value.toLowerCase();
+            const ingred = [];
+
             // on récupère tous les ingrédients des uniquement recettes qui sont en display = true
-            const ingredients = [];
-            DATA.forEach(recipe => {
-                if (recipe.display == true) {
-                    recipe.ingredients.forEach(el => {
-                        ingredients.push(el.ingredient)
-                    });
-                }
-            });
-            
+            displayIngrediantDataIfTrue(DATA, ingred)
+
+
             // on retire les doublons
-            const filteredArray = removeDuplicateItemInArray(ingredients)
+            const filteredArray = removeDuplicateItemInArray(ingred)
             const ingredientsToDisplay = [];
             // on le remplie l'optionContainer
             filteredArray.forEach(ingredient => {
@@ -68,28 +67,28 @@ export const dropDownIngredientsListener = () => {
             ingredientsToDisplay.forEach(ingredient => {
                 optionContainer.innerHTML += `<p>${ingredient}</p>`;
             });
-        }
-        else {
+        } else {
             // si y'a moins de 2 caractères
-            const ingredients = [];
+            const ingred = [];
 
             // on récupère tous les ingrédients des uniquement recettes qui sont en display = true
-            DATA.forEach(recipe => {
-                if (recipe.display == true) {
-                    recipe.ingredients.forEach(el => {
-                        ingredients.push(el.ingredient)
-                    });
-                }
-            });
+            displayIngrediantDataIfTrue(DATA, ingred)
+
+
             // on retire les doublons
-            const filteredArray = removeDuplicateItemInArray(ingredients)
-            // on le remplie l'optionContainer
+            const filteredArray = removeDuplicateItemInArray(ingred)
+                // on le remplie l'optionContainer
             filteredArray.forEach(ingredient => {
                 optionContainer.innerHTML += `<p>${ingredient}</p>`
             });
         }
     })
 }
+
+
+
+
+
 
 // export const dropDownAplianceListener = () => {
 // const dropdownContainer = document.querySelector('.dropdown--ingredients')
@@ -176,21 +175,25 @@ export const dropDownIngredientsListener = () => {
 
 // //Intégrations des datas dans le dropdown
 export const dataInDropdown = (nameElm, balise, classe, data) => {
-    for (let i = 0; i < data.length; i++) {
-        const createElm = createDomElement(nameElm, balise)
-        const classeElm = document.querySelector("." + classe)
-        const displayNone = document.querySelector(".displayNone")
-        const displayBlock = document.querySelector(".displayBlock")
-        const optionContainer = document.querySelector(".optionContainer")
+        for (let i = 0; i < data.length; i++) {
+            const createElm = createDomElement(nameElm, balise)
+            const classeElm = document.querySelector("." + classe)
+            const displayNone = document.querySelector(".displayNone")
+            const displayBlock = document.querySelector(".displayBlock")
+            const optionContainer = document.querySelector(".optionContainer")
 
-        createElm.setAttribute("id", data[i])
-        createElm.innerHTML = data[i]
-        classeElm.append(createElm)
-        console.log(optionContainer.contains(createElm));
+            createElm.setAttribute("id", data[i])
+            createElm.innerHTML = data[i]
+            classeElm.append(createElm)
+            console.log(optionContainer.contains(createElm));
 
+        }
     }
-}
-
+    // ingredientInDom.forEach(ing => {
+    //     ing.addEventListener('click', () => {
+    //         console.log("coucou");
+    //     })
+    // })
 
 // /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 // /*                          EVENTS                                     */

@@ -3,10 +3,12 @@ import { listUstansils, listIngredients, listAppliance } from "../../data/dataHa
 import { createDomElement } from "../utils/tools.js"
 import { createDropdown, dataInDropdown, eventDropdown, zoneDropdown, dropdownIngredients, dropdownAppareil, dropdownUstensiles, dropdownBlue, dropdownIng, dropdownGreen, dropApp, dropdownSalmon, dropdownUst, inputInDropdownBlue, inputInDropdownGreen, inputInDropdownSalmon, name1, name2, name3 } from "./dropdownHandler.js"
 import { createCardsForDom } from "../components/card-recipes.js"
+import { createTag } from "../components/view/tag.js"
 
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 
 const elms = document.querySelectorAll(".ingredient")
+
 
 export let ingredientBox = []
 export let ingredientSelected = []

@@ -50,3 +50,39 @@ export const displayDropdown = () => {
 export const removeDuplicateItemInArray = (array) => array.filter((item, pos) => {
     return array.indexOf(item) == pos;
 })
+
+/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+
+export const displayContentsDropdown = (optionContainer, input, arrow, dropdown) => {
+
+    if (optionContainer.classList.contains("displayNone")) {
+        optionContainer.classList.remove('displayNone')
+        optionContainer.classList.add('displayFlex')
+        input.classList.remove('displayNone')
+        input.classList.add('displayBlock')
+        input.focus()
+        arrow.classList.remove('arrowClose')
+        arrow.classList.add('arrowOpen')
+        dropdown.style.width = "530px"
+    } else {
+        optionContainer.classList.remove('displayFlex')
+        optionContainer.classList.add('displayNone')
+        input.classList.remove('displayBlock')
+        input.classList.add('displayNone')
+        arrow.classList.remove('arrowOpen')
+        arrow.classList.add('arrowClose')
+        dropdown.style.width = "170px"
+    }
+}
+
+/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+
+export let displayIngrediantDataIfTrue = (data, tab) => {
+    data.forEach(recipe => {
+        if (recipe.display == true) {
+            recipe.ingredients.forEach(el => {
+                tab.push(el.ingredient)
+            });
+        }
+    })
+}

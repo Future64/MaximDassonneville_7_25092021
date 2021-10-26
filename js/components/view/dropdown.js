@@ -6,7 +6,7 @@ export const createDropdown = (name) => {
                 <label for="inputInDropdownBlue">
                     <p class="name1">${name}</p>
                 </label>
-                <input type="text" class="inputInDropdownBlue displayNone" id="inputInDropdownBlue">
+                <input type="text" class="inputInDropdownBlue displayNone" id="inputInDropdownBlue" placeholder="Rechercher...">
                 <i class="bi bi-chevron-down arrowClose"></i>
             </div>
             <div class="optionContainer bg-primary dropdownIngredients displayNone" role="listbox"></div>
