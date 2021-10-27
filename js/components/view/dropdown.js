@@ -9,7 +9,9 @@ export const createDropdown = (name) => {
                 <input type="text" class="inputInDropdownBlue displayNone" id="inputInDropdownBlue" placeholder="Rechercher...">
                 <i class="bi bi-chevron-down arrowClose"></i>
             </div>
-            <div class="optionContainer bg-primary dropdownIngredients displayNone" role="listbox"></div>
+            <div class="optionContainer bg-primary dropdownIngredients displayNone" role="listbox">
+            <ul class="listElmt"></ul>
+            </div>
         </div>
     </div>
     `

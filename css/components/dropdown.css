@@ -52,11 +52,21 @@
     overflow-x: scroll;
 }
 
-.optionContainer p {
+.optionContainer ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    max-height: 320px;
+    margin-left: -15px;
+    margin-right: 15px;
+}
+
+.optionContainer li {
     color: white;
-    padding-left: 13px;
+    padding-left: -20px;
     font-size: 13px;
-    margin-right: 50px;
+    padding-right: 50px;
 }
 
 .ingredient,
@@ -66,7 +76,7 @@
     margin-right: 60px;
 }
 
-.optionContainer p:hover {
+.optionContainer li:hover {
     color: springgreen;
 }
 
@@ -113,7 +123,7 @@
 .inputInDropdownSalmon {
     position: absolute;
     z-index: 10;
-    width: 220px;
+    width: 470px;
     margin-bottom: 8px;
     left: 13px;
     background-color: transparent;
@@ -166,8 +176,8 @@ input:focus {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-left: 70px;
-    margin-bottom: 10px;
+    margin-left: 10%;
+    margin-bottom: 20px;
 }
 
 .tag {

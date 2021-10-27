@@ -18,7 +18,7 @@
 .cardBox {
     padding: 20px;
     width: 350px;
-    height: 200px;
+    height: 250px;
     border-radius: 0 0 8px 8px;
 }
 
@@ -53,9 +53,9 @@
 
 .ingredientsCard {
     width: 400px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     overflow-x: hidden;
-    max-height: 110px;
+    max-height: 210px;
 }
 
 .ingredientsCard p {
@@ -69,14 +69,19 @@
     max-width: 210px;
     overflow-y: scroll;
     overflow-x: hidden;
-    max-height: 110px;
+    /* overflow: hidden; */
+    max-height: 250px;
+}
+
+.cardResume::-webkit-scrollbar:window-inactive {
+    display: none;
 }
 
 .cardResume p {
     /* display: block; */
     font-size: 10px;
     text-overflow: ellipsis;
-    max-height: 140px;
+    max-height: 170px;
 }
 
 .cardImg {

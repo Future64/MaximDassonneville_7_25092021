@@ -7,28 +7,28 @@ import { createTag } from "../components/view/tag.js"
 
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 
-const elms = document.querySelectorAll(".ingredient")
+// const elms = document.querySelectorAll(".ingredient")
 
 
-export let ingredientBox = []
-export let ingredientSelected = []
+// export let ingredientBox = []
+// export let ingredientSelected = []
 
-const pushInTheBox = (word, input, box) => {
-    if (!word.indexOf(input.value)) {
-        box.push(word)
+// const pushInTheBox = (word, input, box) => {
+//     if (!word.indexOf(input.value)) {
+//         box.push(word)
 
-    }
-}
+//     }
+// }
 
-// Ecoute de l'input
-dropdownBlue.addEventListener('input', () => {
-    // Si il y a plus de 2 caractères
-    if (inputInDropdownBlue.value.length > 2) {
-        ingredientBox = []
-            //Pour chaque ingrédients...
-        listIngredients.forEach((ingredient) => {
-            pushInTheBox(ingredient, inputInDropdownBlue, ingredientBox)
-        })
-    }
-    dataInDropdown("ingredient", "p", "dropdownIngredients", ingredientBox)
-});
+// // Ecoute de l'input
+// dropdownBlue.addEventListener('input', () => {
+//     // Si il y a plus de 2 caractères
+//     if (inputInDropdownBlue.value.length > 2) {
+//         ingredientBox = []
+//             //Pour chaque ingrédients...
+//         listIngredients.forEach((ingredient) => {
+//             pushInTheBox(ingredient, inputInDropdownBlue, ingredientBox)
+//         })
+//     }
+//     dataInDropdown("ingredient", "p", "dropdownIngredients", ingredientBox)
+// });
