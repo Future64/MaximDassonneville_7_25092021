@@ -67,7 +67,7 @@ export const removeDuplicateItemInArray = (array) => array.filter((item, pos) =>
 
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
 
-export const displayContentsDropdown = (optionContainer, input, arrow, dropdown) => {
+export const displayContentsDropdown = (optionContainer, input, arrow, dropdown, pixel) => {
 
     if (optionContainer.classList.contains("displayNone")) {
         optionContainer.classList.remove('displayNone')
@@ -77,7 +77,7 @@ export const displayContentsDropdown = (optionContainer, input, arrow, dropdown)
         input.focus()
         arrow.classList.remove('arrowClose')
         arrow.classList.add('arrowOpen')
-        dropdown.style.width = "530px"
+        dropdown.style.width = pixel + "px"
     } else {
         optionContainer.classList.remove('displayFlex')
         optionContainer.classList.add('displayNone')
@@ -114,9 +114,7 @@ export let displayUstansilDataIfTrue = (data, tab) => {
 export let displayAppareilDataIfTrue = (data, tab) => {
     data.forEach(recipe => {
         if (recipe.display == true) {
-            recipe.appliance.forEach(el => {
-                tab.push(el)
-            });
+            tab.push(recipe.appliance)
         }
     })
 }

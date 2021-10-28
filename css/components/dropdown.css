@@ -28,7 +28,7 @@
 }
 
 .dropdown--appareil {
-    background-color: yellowgreen;
+    background-color: rgb(50, 205, 159);
 }
 
 .dropdown--ustensiles {
@@ -46,24 +46,30 @@
     z-index: 10;
     top: -9px;
     left: 0px;
-    width: 530px;
-    max-height: 350px;
+    /* width: 530px;
+    max-height: 350px; */
     border-radius: 0 0 5px 5px;
     padding-bottom: 9px;
     /* overflow-y: scroll; */
-    overflow-x: scroll;
 }
 
 .optionContainer1 {
     background-color: rgb(29, 110, 250);
+    width: 530px;
+    max-height: 350px;
+    overflow-x: scroll;
 }
 
 .optionContainer2 {
-    background-color: yellowgreen;
+    background-color: rgb(50, 205, 159);
+    width: 250px;
+    max-height: 350px;
 }
 
 .optionContainer3 {
     background-color: salmon;
+    width: 430px;
+    max-height: 350px;
 }
 
 .optionContainer ul {
@@ -99,11 +105,11 @@
 }
 
 .dropdownGreen .optionContainer2 {
-    background-color: yellowgreen;
+    background-color: rgb(50, 205, 159);
 }
 
 .dropdownGreen {
-    background-color: yellowgreen;
+    background-color: rgb(50, 205, 159);
 }
 
 .dropdownOrange {
@@ -137,7 +143,7 @@
 .inputInDropdownSalmon {
     position: absolute;
     z-index: 10;
-    width: 470px;
+    /* width: 470px; */
     margin-bottom: 8px;
     left: 13px;
     background-color: transparent;
@@ -160,14 +166,17 @@ input:focus {
 .inputInDropdownBlue {
     background-color: rgb(29, 110, 250);
     cursor: pointer;
+    width: 470px;
 }
 
 .inputInDropdownGreen {
-    background-color: yellowgreen;
+    background-color: rgb(50, 205, 159);
+    width: 190px;
 }
 
 .inputInDropdownSalmon {
     background-color: salmon;
+    width: 370px;
 }
 
 .arrowClose {
