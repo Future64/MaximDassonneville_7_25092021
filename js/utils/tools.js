@@ -16,12 +16,15 @@ export const createDomElement = (className, DomElem) => {
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
 
 // Fonction qui permet d'ouvrir une fenêtre
-export const displayRecipes = (DATA) => {
+export const displayRecipes = (data) => {
     const zoneCards = document.querySelector(".zoneCards")
 
-    DATA.forEach(recipe => {
+    data.forEach(recipe => {
         if (recipe.display == true) {
             const card = createCardsForDom(recipe)
+
+            // zoneCards.remove(card)
+
             zoneCards.append(card)
         }
     });
@@ -39,10 +42,21 @@ export const displayDropdown = () => {
         'ustensiles'
     ]
 
-    dropdownNames.forEach(name => {
-        const dropdown = createDropdown(name)
-        zoneDropdown.innerHTML += dropdown
-    });
+    const dropdownID = [
+        'inputInDropdownBlue',
+        'inputInDropdownGreen',
+        'inputInDropdownSolmon'
+    ]
+
+    const dropdown1 = createDropdown('ingredients', 'inputInDropdownBlue', 1)
+    const dropdown2 = createDropdown('appareil', 'inputInDropdownGreen', 2)
+    const dropdown3 = createDropdown('ustensiles', 'inputInDropdownSalmon', 3)
+    zoneDropdown.innerHTML += dropdown1 + dropdown2 + dropdown3
+
+    // dropdownNames.forEach(name => {
+    //     const dropdown = createDropdown(name)
+    //     zoneDropdown.innerHTML += dropdown
+    // });
 }
 
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
@@ -82,6 +96,26 @@ export let displayIngrediantDataIfTrue = (data, tab) => {
         if (recipe.display == true) {
             recipe.ingredients.forEach(el => {
                 tab.push(el.ingredient)
+            });
+        }
+    })
+}
+
+export let displayUstansilDataIfTrue = (data, tab) => {
+    data.forEach(recipe => {
+        if (recipe.display == true) {
+            recipe.ustensils.forEach(el => {
+                tab.push(el)
+            });
+        }
+    })
+}
+
+export let displayAppareilDataIfTrue = (data, tab) => {
+    data.forEach(recipe => {
+        if (recipe.display == true) {
+            recipe.appliance.forEach(el => {
+                tab.push(el)
             });
         }
     })
