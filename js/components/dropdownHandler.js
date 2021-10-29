@@ -1,6 +1,6 @@
 // import { createDomElement } from "../utils/tools.js"
 import { DATA } from "../../data/dataHandler.js"
-import { displayRecipes, removeDuplicateItemInArray, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue } from "../utils/tools.js"
+import { displayRecipes, removeDuplicateItemInArray, removeDuplicateItemInArrayUstensils, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue } from "../utils/tools.js"
 import { createTag } from "../components/view/tag.js"
 
 
@@ -15,10 +15,12 @@ export const dropDownIngredientsListener = () => {
     const input = document.querySelector('#inputInDropdownBlue')
     const optionContainer = dropdownContainer.querySelector('.optionContainer1')
     const arrow = dropdownContainer.querySelector('.bi-chevron-down')
-
     const listElmt = document.querySelector('.listElmt1')
-    const elmt = document.querySelectorAll('.li')
+    const elmt = document.querySelectorAll('li')
     const zoneCards = document.querySelector(".zoneCards")
+    const zoneTag = document.querySelector(".zoneTag")
+    let tagBox = document.querySelector(".tag")
+        // const circle = document.querySelector(".bi-x-circle")
 
     // ===================
     //      AU CLICK
@@ -35,7 +37,7 @@ export const dropDownIngredientsListener = () => {
         // on le remplie l'optionContainer
         listElmt.innerHTML = ""
         filteredArray.forEach(ingredient => {
-            listElmt.innerHTML += `<li class="elmt">${ingredient}</li>`
+            listElmt.innerHTML += `<li class="elmt" id="${ingredient}">${ingredient}</li>`
         })
 
         // on affiche l'optionContainer
@@ -52,7 +54,7 @@ export const dropDownIngredientsListener = () => {
             const taping = input.value.toLowerCase();
             const ingred = []
 
-            // on récupère tous les ingrédients des uniquement recettes qui sont en display = true
+            // on récupère tous les ingrédients des recettes qui sont uniquement en display = true
             displayIngrediantDataIfTrue(DATA, ingred)
 
 
@@ -69,8 +71,10 @@ export const dropDownIngredientsListener = () => {
 
             listElmt.innerHTML = ''
             ingredientsToDisplay.forEach(ingredient => {
-                listElmt.innerHTML += `<li class="elmt">${ingredient}</li>`;
+                listElmt.innerHTML += `<li class="elmt" id="${ingredient}">${ingredient}</li>`;
             });
+
+
 
         } else {
 
@@ -87,13 +91,25 @@ export const dropDownIngredientsListener = () => {
 
             // on le remplie l'optionContainer
             filteredArray.forEach(ingredient => {
-                listElmt.innerHTML += `<li class="elmt">${ingredient}</li>`
+                listElmt.innerHTML += `<li class="elmt" id="${ingredient}">${ingredient}</li>`
             })
         }
-
     })
-}
+    listElmt.addEventListener("click", (e) => {
+        console.log(e.target.innerHTML);
+        const tag = createTag(e.target.innerHTML, "Ingredients")
+        zoneTag.innerHTML += tag
 
+        const circle = document.querySelector(".bi-x-circle")
+        circle.addEventListener("click", () => {
+            console.log(tag);
+            // zoneTag.remove(tag)
+            zoneTag.innerHTML = ""
+        })
+    })
+
+
+}
 
 
 
@@ -108,6 +124,7 @@ export const dropDownAppareilListener = () => {
     const optionContainer = document.querySelector('.optionContainer2')
     const arrow = dropdownContainer.querySelector('.bi-chevron-down')
     const listElmt = document.querySelector('.listElmt2')
+    const zoneTag = document.querySelector(".zoneTag")
 
     // ===================
     //      AU CLICK
@@ -117,7 +134,6 @@ export const dropDownAppareilListener = () => {
 
         // on récupère tous les ingrédients des uniquement ustensils qui sont en display = true
         displayAppareilDataIfTrue(DATA, app)
-        console.log(app);
 
         // on retire les doublons
         const filteredArray = removeDuplicateItemInArray(app)
@@ -125,7 +141,7 @@ export const dropDownAppareilListener = () => {
         // on le remplie l'optionContainer
         listElmt.innerHTML = ""
         filteredArray.forEach(appareil => {
-            listElmt.innerHTML += `<li class="elmt">${appareil}</li>`
+            listElmt.innerHTML += `<li class="elmt" id="${appareil}">${appareil}</li>`
         })
 
         // on affiche l'optionContainer
@@ -159,7 +175,7 @@ export const dropDownAppareilListener = () => {
 
             listElmt.innerHTML = ''
             ingredientsToDisplay.forEach(appareil => {
-                listElmt.innerHTML += `<li class="elmt">${appareil}</li>`;
+                listElmt.innerHTML += `<li class="elmt" id="${appareil}">${appareil}</li>`;
             });
 
         } else {
@@ -177,10 +193,22 @@ export const dropDownAppareilListener = () => {
 
             // on le remplie l'optionContainer
             filteredArray.forEach(appareil => {
-                listElmt.innerHTML += `<li class="elmt">${appareil}</li>`
+                listElmt.innerHTML += `<li class="elmt" id="${appareil}">${appareil}</li>`
             })
         }
 
+    })
+    listElmt.addEventListener("click", (e) => {
+        console.log(e.target.innerHTML);
+        const tag = createTag(e.target.innerHTML, "Appareil")
+        zoneTag.innerHTML += tag
+
+        const circle = document.querySelector(".bi-x-circle")
+        circle.addEventListener("click", () => {
+            console.log(tag);
+            // zoneTag.remove(tag)
+            zoneTag.innerHTML = ""
+        })
     })
 }
 
@@ -198,6 +226,7 @@ export const dropDownUstansilsListener = () => {
     const optionContainer = document.querySelector('.optionContainer3')
     const arrow = dropdownContainer.querySelector('.bi-chevron-down')
     const listElmt = document.querySelector('.listElmt3')
+    const zoneTag = document.querySelector(".zoneTag")
 
 
     // ===================
@@ -210,12 +239,12 @@ export const dropDownUstansilsListener = () => {
         displayUstansilDataIfTrue(DATA, ust)
 
         // on retire les doublons
-        const filteredArray = removeDuplicateItemInArray(ust)
+        const filteredArray = removeDuplicateItemInArrayUstensils(ust)
 
         // on le remplie l'optionContainer
         listElmt.innerHTML = ""
         filteredArray.forEach(ustensil => {
-            listElmt.innerHTML += `<li class="elmt">${ustensil}</li>`
+            listElmt.innerHTML += `<li class="elmt" id="${ustensil}">${ustensil}</li>`
         })
 
         // on affiche l'optionContainer
@@ -238,7 +267,7 @@ export const dropDownUstansilsListener = () => {
 
 
             // on retire les doublons
-            const filteredArray = removeDuplicateItemInArray(ust)
+            const filteredArray = removeDuplicateItemInArrayUstensils(ust)
             const ingredientsToDisplay = []
 
             // on le remplie l'optionContainer
@@ -250,7 +279,7 @@ export const dropDownUstansilsListener = () => {
 
             listElmt.innerHTML = ''
             ingredientsToDisplay.forEach(ustensil => {
-                listElmt.innerHTML += `<li class="elmt">${ustensil}</li>`;
+                listElmt.innerHTML += `<li class="elmt" id="${ustensil}">${ustensil}</li>`;
             });
 
         } else {
@@ -263,14 +292,25 @@ export const dropDownUstansilsListener = () => {
 
 
             // on retire les doublons
-            const filteredArray = removeDuplicateItemInArray(ust)
+            const filteredArray = removeDuplicateItemInArrayUstensils(ust)
             listElmt.innerHTML = ""
 
             // on le remplie l'optionContainer
             filteredArray.forEach(ustensil => {
-                listElmt.innerHTML += `<li class="elmt">${ustensil}</li>`
+                listElmt.innerHTML += `<li class="elmt" id="${ustensil}">${ustensil}</li>`
             })
         }
+    })
+    listElmt.addEventListener("click", (e) => {
+        console.log(e.target.innerHTML);
+        const tag = createTag(e.target.innerHTML, "Ustensiles")
+        zoneTag.innerHTML += tag
 
+        const circle = document.querySelector(".bi-x-circle")
+        circle.addEventListener("click", () => {
+            console.log(tag);
+            // zoneTag.remove(tag)
+            zoneTag.innerHTML = ""
+        })
     })
 }

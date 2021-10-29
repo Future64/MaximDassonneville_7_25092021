@@ -197,19 +197,32 @@ input:focus {
 .zoneTag {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
     margin-left: 10%;
     margin-bottom: 20px;
 }
 
 .tag {
-    background-color: rgb(29, 110, 250);
+    /* background-color: rgb(29, 110, 250); */
     border-radius: 5px;
     padding: 3px 10px;
     color: white;
     font-size: 12px;
     margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.tagIngredients {
+    background-color: rgb(29, 110, 250);
+}
+
+.tagAppareil {
+    background-color: rgb(50, 205, 159);
+}
+
+.tagUstensiles {
+    background-color: salmon;
 }
 
 .tagTxt {

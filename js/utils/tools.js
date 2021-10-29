@@ -22,10 +22,25 @@ export const displayRecipes = (data) => {
     data.forEach(recipe => {
         if (recipe.display == true) {
             const card = createCardsForDom(recipe)
-
-            // zoneCards.remove(card)
-
             zoneCards.append(card)
+        } else {
+            const card = createCardsForDom(recipe)
+            zoneCards.remove(card)
+        }
+    });
+}
+
+/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+
+// Fonction qui permet de fermer une fenêtre
+export const removeRecipes = (data) => {
+    const zoneCards = document.querySelector(".zoneCards")
+
+    data.forEach(recipe => {
+        if (recipe.display == false) {
+            const card = createCardsForDom(recipe)
+                // zoneCards.append(card)
+            zoneCards.remove(card)
         }
     });
 }
@@ -36,33 +51,23 @@ export const displayRecipes = (data) => {
 export const displayDropdown = () => {
     const zoneDropdown = document.querySelector(".zoneDropdown")
 
-    const dropdownNames = [
-        'ingredients',
-        'appareil',
-        'ustensiles'
-    ]
-
-    const dropdownID = [
-        'inputInDropdownBlue',
-        'inputInDropdownGreen',
-        'inputInDropdownSolmon'
-    ]
-
     const dropdown1 = createDropdown('ingredients', 'inputInDropdownBlue', 1)
     const dropdown2 = createDropdown('appareil', 'inputInDropdownGreen', 2)
     const dropdown3 = createDropdown('ustensiles', 'inputInDropdownSalmon', 3)
     zoneDropdown.innerHTML += dropdown1 + dropdown2 + dropdown3
 
-    // dropdownNames.forEach(name => {
-    //     const dropdown = createDropdown(name)
-    //     zoneDropdown.innerHTML += dropdown
-    // });
 }
 
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
 
 export const removeDuplicateItemInArray = (array) => array.filter((item, pos) => {
     return array.indexOf(item) == pos;
+})
+
+/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+
+export const removeDuplicateItemInArrayUstensils = (array) => array.filter((item, pos) => {
+    return array.indexOf(item.toLowerCase()) == pos;
 })
 
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
