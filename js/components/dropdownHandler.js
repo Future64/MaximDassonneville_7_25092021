@@ -1,6 +1,6 @@
 // import { createDomElement } from "../utils/tools.js"
 import { DATA } from "../../data/dataHandler.js"
-import { displayRecipes, removeDuplicateItemInArray, removeDuplicateItemInArrayUstensils, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue } from "../utils/tools.js"
+import { displayRecipes, removeDuplicateItemInArray, removeDuplicateItemInArrayUstensils, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue, removeRecipes } from "../utils/tools.js"
 import { createTag } from "../components/view/tag.js"
 
 
@@ -74,6 +74,22 @@ export const dropDownIngredientsListener = () => {
                 listElmt.innerHTML += `<li class="elmt" id="${ingredient}">${ingredient}</li>`;
             });
 
+            // DATA.forEach(recipe => {
+            //     const zoneCards = document.querySelector(".zoneCards")
+            //         // console.log(ingredient);
+            //     if (recipe.ingredients == ingredientsToDisplay) {
+            //         recipe.display = true;
+            //         // removeRecipes(DATA)
+            //         zoneCards.innerHTML = ""
+            //         displayRecipes(DATA)
+            //     } else {
+            //         recipe.display = false;
+            //         // removeRecipes(DATA)
+            //         zoneCards.innerHTML = ""
+            //         displayRecipes(DATA)
+            //     }
+            // })
+
 
 
         } else {
@@ -91,25 +107,36 @@ export const dropDownIngredientsListener = () => {
 
             // on le remplie l'optionContainer
             filteredArray.forEach(ingredient => {
-                listElmt.innerHTML += `<li class="elmt" id="${ingredient}">${ingredient}</li>`
-            })
+                    listElmt.innerHTML += `<li class="elmt" id="${ingredient}">${ingredient}</li>`
+                })
+                // displayRecipes(DATA)
         }
     })
+
+
+    // quand on click sur un <li> ça crée un tag
     listElmt.addEventListener("click", (e) => {
         console.log(e.target.innerHTML);
         const tag = createTag(e.target.innerHTML, "Ingredients")
         zoneTag.innerHTML += tag
+            // DATA.setAttribute("")
 
-        const circle = document.querySelector(".bi-x-circle")
-        circle.addEventListener("click", () => {
-            console.log(tag);
-            // zoneTag.remove(tag)
-            zoneTag.innerHTML = ""
+        const tags = document.querySelectorAll(".tag")
+
+        tags.forEach(t => {
+            // quand on click sur la croix ça éfface les tags du Dom
+            const circle = document.querySelector(".bi-x-circle")
+            circle.addEventListener("click", () => {
+                // console.log(t);
+                // zoneTag.remove(t)
+                // zoneTag.innerHTML = ""
+            })
         })
     })
 
-
 }
+
+
 
 
 
@@ -198,11 +225,14 @@ export const dropDownAppareilListener = () => {
         }
 
     })
+
+    // quand on click sur un <li> ça crée un tag
     listElmt.addEventListener("click", (e) => {
         console.log(e.target.innerHTML);
         const tag = createTag(e.target.innerHTML, "Appareil")
         zoneTag.innerHTML += tag
 
+        // quand on click sur la croix ça éfface les tags du Dom
         const circle = document.querySelector(".bi-x-circle")
         circle.addEventListener("click", () => {
             console.log(tag);
@@ -301,11 +331,14 @@ export const dropDownUstansilsListener = () => {
             })
         }
     })
+
+    // quand on click sur un <li> ça crée un tag
     listElmt.addEventListener("click", (e) => {
         console.log(e.target.innerHTML);
         const tag = createTag(e.target.innerHTML, "Ustensiles")
         zoneTag.innerHTML += tag
 
+        // quand on click sur la croix ça éfface les tags du Dom
         const circle = document.querySelector(".bi-x-circle")
         circle.addEventListener("click", () => {
             console.log(tag);

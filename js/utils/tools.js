@@ -40,7 +40,7 @@ export const removeRecipes = (data) => {
         if (recipe.display == false) {
             const card = createCardsForDom(recipe)
                 // zoneCards.append(card)
-            zoneCards.remove(card)
+            zoneCards.innerHTML = ""
         }
     });
 }

@@ -2,7 +2,9 @@ import { recipes } from "./recipes.js"
 
 export let DATA = recipes;
 DATA.forEach(recipe => {
+    // recipe.setAttribute("display", "true")
     recipe.display = true;
+    console.log(recipe);
 });
 
 
@@ -13,19 +15,19 @@ DATA.forEach(recipe => {
 // //Pour chaque recettes du Json, on pousse tout les éléments dans leurs tableaux dédiés...
 // const initData = () => {
 //     for (let i = 0; i < recipes.length; i++) {
-    
+
 //         //...on pousse tout les ustansiles dans le tableau "ustansilsNotSorted"
 //         for (let j = 0; j < recipes[i].ustensils.length; j++) {
 //             ustansilsNotSorted.push(recipes[i].ustensils[j])
 //         }
-    
+
 //         //...on pousse tout les ingredients dans le tableau "ingredientsNotSorted"
 //         for (let k = 0; k < recipes[i].ingredients.length; k++) {
 //             for (let l = 0; l < recipes[i].ingredients[k].ingredient.length; l++) {
 //                 ingredientsNotSorted.push(recipes[i].ingredients[k].ingredient)
 //             }
 //         }
-    
+
 //         //...on pousse tout les appliances dans le tableau "applianceNotSorted"
 //         for (let o = 0; o < recipes[i].appliance.length; o++) {
 //             applianceNotSorted.push(recipes[i].appliance)
