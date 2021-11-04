@@ -18,14 +18,12 @@ export const createDomElement = (className, DomElem) => {
 // Fonction qui permet d'ouvrir une fenêtre
 export const displayRecipes = (data) => {
     const zoneCards = document.querySelector(".zoneCards")
+    zoneCards.innerHTML = ""
 
     data.forEach(recipe => {
         if (recipe.display == true) {
             const card = createCardsForDom(recipe)
             zoneCards.append(card)
-        } else {
-            const card = createCardsForDom(recipe)
-            zoneCards.remove(card)
         }
     });
 }
@@ -122,4 +120,23 @@ export let displayAppareilDataIfTrue = (data, tab) => {
             tab.push(recipe.appliance)
         }
     })
+}
+
+/*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
+
+export const deleteTag = () => {
+    const tags = document.querySelectorAll('.tag')
+    tags.forEach(tag => {
+        const circle = tag.querySelector(".bi-x-circle")
+        circle.addEventListener("click", () => {
+            tag.remove()
+        })
+    })
+}
+
+
+export const tagObserver = () => {
+    const zoneTag = document.querySelector('.zoneTag')
+    const observer = new MutationObserver(deleteTag)
+    observer.observe(zoneTag, { childList: true })
 }

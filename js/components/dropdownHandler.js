@@ -1,6 +1,6 @@
 // import { createDomElement } from "../utils/tools.js"
 import { DATA } from "../../data/dataHandler.js"
-import { displayRecipes, removeDuplicateItemInArray, removeDuplicateItemInArrayUstensils, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue, removeRecipes } from "../utils/tools.js"
+import { displayRecipes, removeDuplicateItemInArray, removeDuplicateItemInArrayUstensils, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue, removeRecipes, deleteTag, tagObserver } from "../utils/tools.js"
 import { createTag } from "../components/view/tag.js"
 
 
@@ -74,24 +74,6 @@ export const dropDownIngredientsListener = () => {
                 listElmt.innerHTML += `<li class="elmt" id="${ingredient}">${ingredient}</li>`;
             });
 
-            // DATA.forEach(recipe => {
-            //     const zoneCards = document.querySelector(".zoneCards")
-            //         // console.log(ingredient);
-            //     if (recipe.ingredients == ingredientsToDisplay) {
-            //         recipe.display = true;
-            //         // removeRecipes(DATA)
-            //         zoneCards.innerHTML = ""
-            //         displayRecipes(DATA)
-            //     } else {
-            //         recipe.display = false;
-            //         // removeRecipes(DATA)
-            //         zoneCards.innerHTML = ""
-            //         displayRecipes(DATA)
-            //     }
-            // })
-
-
-
         } else {
 
             // si y'a moins de 2 caractères
@@ -116,25 +98,31 @@ export const dropDownIngredientsListener = () => {
 
     // quand on click sur un <li> ça crée un tag
     listElmt.addEventListener("click", (e) => {
-        console.log(e.target.innerHTML);
+        const selectedTag = e.target.innerHTML
         const tag = createTag(e.target.innerHTML, "Ingredients")
         zoneTag.innerHTML += tag
-            // DATA.setAttribute("")
 
-        const tags = document.querySelectorAll(".tag")
-
-        tags.forEach(t => {
-            // quand on click sur la croix ça éfface les tags du Dom
-            const circle = document.querySelector(".bi-x-circle")
-            circle.addEventListener("click", () => {
-                // console.log(t);
-                // zoneTag.remove(t)
-                // zoneTag.innerHTML = ""
-            })
-        })
+        // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
+        for (let i = 0; i < DATA.length; i++) {
+            const recipe = DATA[i]
+                // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+            if (recipe.display == true) {
+                for (let j = 0; j < recipe.ingredients.length; j++) {
+                    const ingredient = recipe.ingredients[j]
+                    if (ingredient.ingredient.toLowerCase() === selectedTag.toLowerCase()) {
+                        recipe.display = true
+                        break
+                    } else {
+                        recipe.display = false
+                    }
+                }
+            }
+        }
+        displayRecipes(DATA)
     })
-
 }
+
+
 
 
 
@@ -228,17 +216,29 @@ export const dropDownAppareilListener = () => {
 
     // quand on click sur un <li> ça crée un tag
     listElmt.addEventListener("click", (e) => {
-        console.log(e.target.innerHTML);
+        const selectedTag = e.target.innerHTML
         const tag = createTag(e.target.innerHTML, "Appareil")
         zoneTag.innerHTML += tag
 
-        // quand on click sur la croix ça éfface les tags du Dom
-        const circle = document.querySelector(".bi-x-circle")
-        circle.addEventListener("click", () => {
-            console.log(tag);
-            // zoneTag.remove(tag)
-            zoneTag.innerHTML = ""
-        })
+        // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
+        for (let i = 0; i < DATA.length; i++) {
+            const recipe = DATA[i]
+            console.log(DATA[i]);
+            // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+            if (recipe.display == true) {
+                for (let j = 0; j < recipe.appliance.length; j++) {
+                    const appareil = recipe.appliance
+                    console.log(recipe.appliance);
+                    if (appareil.toLowerCase() === selectedTag.toLowerCase()) {
+                        recipe.display = true
+                        break
+                    } else {
+                        recipe.display = false
+                    }
+                }
+            }
+        }
+        displayRecipes(DATA)
     })
 }
 
@@ -334,16 +334,28 @@ export const dropDownUstansilsListener = () => {
 
     // quand on click sur un <li> ça crée un tag
     listElmt.addEventListener("click", (e) => {
-        console.log(e.target.innerHTML);
+        const selectedTag = e.target.innerHTML
         const tag = createTag(e.target.innerHTML, "Ustensiles")
         zoneTag.innerHTML += tag
 
-        // quand on click sur la croix ça éfface les tags du Dom
-        const circle = document.querySelector(".bi-x-circle")
-        circle.addEventListener("click", () => {
-            console.log(tag);
-            // zoneTag.remove(tag)
-            zoneTag.innerHTML = ""
-        })
+        // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
+        for (let i = 0; i < DATA.length; i++) {
+            const recipe = DATA[i]
+            console.log(DATA[i]);
+            // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+            if (recipe.display == true) {
+                for (let j = 0; j < recipe.ustensils.length; j++) {
+                    const ustensile = recipe.ustensils[j]
+                    console.log(recipe.ustensils[j]);
+                    if (ustensile.toLowerCase() === selectedTag.toLowerCase()) {
+                        recipe.display = true
+                        break
+                    } else {
+                        recipe.display = false
+                    }
+                }
+            }
+        }
+        displayRecipes(DATA)
     })
 }

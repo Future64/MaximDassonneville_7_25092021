@@ -4,7 +4,7 @@ export let DATA = recipes;
 DATA.forEach(recipe => {
     // recipe.setAttribute("display", "true")
     recipe.display = true;
-    console.log(recipe);
+    // console.log(recipe);
 });
 
 
