@@ -16,11 +16,8 @@ export const dropDownIngredientsListener = () => {
     const optionContainer = dropdownContainer.querySelector('.optionContainer1')
     const arrow = dropdownContainer.querySelector('.bi-chevron-down')
     const listElmt = document.querySelector('.listElmt1')
-    const elmt = document.querySelectorAll('li')
-    const zoneCards = document.querySelector(".zoneCards")
     const zoneTag = document.querySelector(".zoneTag")
-    let tagBox = document.querySelector(".tag")
-        // const circle = document.querySelector(".bi-x-circle")
+
 
     // ===================
     //      AU CLICK
@@ -358,4 +355,115 @@ export const dropDownUstansilsListener = () => {
         }
         displayRecipes(DATA)
     })
+}
+
+
+
+
+
+
+
+
+/*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
+//                                  INPUT MAIN
+/*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
+
+export const InputMainListener = () => {
+    const dropdownContainerIng = document.querySelector('.dropdown--ingredients')
+    const dropdownContainerApp = document.querySelector('.dropdown--appareil')
+    const dropdownContainerUst = document.querySelector('.dropdown--ustensiles')
+    const inputMain = document.querySelector('#inputSearch')
+    const inputIng = document.querySelector('#inputInDropdownBlue')
+    const inputApp = document.querySelector('#inputInDropdownGreen')
+    const inputUst = document.querySelector('#inputInDropdownGreen')
+    const optionContainerIng = document.querySelector('.optionContainer1')
+    const optionContainerApp = document.querySelector('.optionContainer2')
+    const optionContainerUst = document.querySelector('.optionContainer3')
+    const listElmtIng = document.querySelector('.listElmt1')
+    const listElmtApp = document.querySelector('.listElmt2')
+    const listElmtUst = document.querySelector('.listElmt3')
+    const zoneTag = document.querySelector(".zoneTag")
+        // const arrow = dropdownContainer.querySelector('.bi-chevron-down')
+
+
+
+    // ===================
+    //      A L'INPUT
+    // ===================
+    inputMain.addEventListener('input', () => {
+        // Si il y a plus de 2 caractères
+        if (inputMain.value.length > 2) {
+            const taping = inputMain.value.toLowerCase();
+            const words = []
+
+            // on récupère tous les mots des recettes qui sont uniquement en display = true
+            displayIngrediantDataIfTrue(DATA, words)
+
+
+            // on retire les doublons
+            const filteredArray = removeDuplicateItemInArray(words)
+            const wordsToDisplay = []
+
+            // on le remplie l'optionContainer
+            filteredArray.forEach(word => {
+                if (word.toLowerCase().indexOf(taping) >= 0) {
+                    wordsToDisplay.push(word)
+                }
+            })
+
+            listElmtIng.innerHTML = ''
+            wordsToDisplay.forEach(word => {
+                listElmtIng.innerHTML += `<li class="elmt" id="${word}">${word}</li>`;
+            });
+
+        } else {
+
+            // si y'a moins de 2 caractères
+            const words = []
+
+            // on récupère tous les mots des recettes qui sont uniquement en display = true
+            displayIngrediantDataIfTrue(DATA, words)
+
+
+            // on retire les doublons
+            const filteredArray = removeDuplicateItemInArray(words)
+            listElmtIng.innerHTML = ""
+
+            // on le remplie l'optionContainer
+            filteredArray.forEach(word => {
+                    listElmtIng.innerHTML += `<li class="elmt" id="${word}">${word}</li>`
+                })
+                // displayRecipes(DATA)
+        }
+    })
+
+    inputMain.addEventListener('keydown', (e) => {
+        if (e.keyCode == 13) {
+            const selectedTag = e.target.innerHTML
+            const tag = createTag(e.target.innerHTML, "Ustensiles")
+            zoneTag.innerHTML += tag
+
+            // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
+            for (let i = 0; i < DATA.length; i++) {
+                const recipe = DATA[i]
+                console.log(DATA[i]);
+                // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+                if (recipe.display == true) {
+                    for (let j = 0; j < recipe.ustensils.length; j++) {
+                        const ustensile = recipe.ustensils[j]
+                        console.log(recipe.ustensils[j]);
+                        if (ustensile.toLowerCase() === selectedTag.toLowerCase()) {
+                            recipe.display = true
+                            break
+                        } else {
+                            recipe.display = false
+                        }
+                    }
+                }
+            }
+            displayRecipes(DATA)
+        }
+
+    })
+
 }
