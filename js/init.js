@@ -1,5 +1,8 @@
 import { DATA } from '../data/dataHandler.js'
-import { dropDownIngredientsListener, dropDownUstansilsListener, dropDownAppareilListener, InputMainListener } from './components/dropdownHandler.js';
+import { InputMainListener } from './components/dropdownHandlerInputMain.js';
+import { dropDownIngredientsListener } from "./components/dropdownHandlerIngredients.js"
+import { dropDownUstansilsListener } from "./components/dropdownHandlerUstansils.js"
+import { dropDownAppareilListener } from "./components/dropdownHandlerAppareils.js"
 import { displayDropdown, displayRecipes, removeRecipes, deleteTag, tagObserver } from './utils/tools.js';
 
 const init = () => {
