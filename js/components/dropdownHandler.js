@@ -369,101 +369,65 @@ export const dropDownUstansilsListener = () => {
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 
 export const InputMainListener = () => {
-    const dropdownContainerIng = document.querySelector('.dropdown--ingredients')
-    const dropdownContainerApp = document.querySelector('.dropdown--appareil')
-    const dropdownContainerUst = document.querySelector('.dropdown--ustensiles')
     const inputMain = document.querySelector('#inputSearch')
-    const inputIng = document.querySelector('#inputInDropdownBlue')
-    const inputApp = document.querySelector('#inputInDropdownGreen')
-    const inputUst = document.querySelector('#inputInDropdownGreen')
-    const optionContainerIng = document.querySelector('.optionContainer1')
-    const optionContainerApp = document.querySelector('.optionContainer2')
-    const optionContainerUst = document.querySelector('.optionContainer3')
-    const listElmtIng = document.querySelector('.listElmt1')
-    const listElmtApp = document.querySelector('.listElmt2')
-    const listElmtUst = document.querySelector('.listElmt3')
-    const zoneTag = document.querySelector(".zoneTag")
-        // const arrow = dropdownContainer.querySelector('.bi-chevron-down')
-
-
 
     // ===================
     //      A L'INPUT
     // ===================
     inputMain.addEventListener('input', () => {
+        const mainInputValue = inputMain.value.toLowerCase();
+
         // Si il y a plus de 2 caractères
         if (inputMain.value.length > 2) {
-            const taping = inputMain.value.toLowerCase();
-            const words = []
+            DATA.forEach(recipe => { recipe.display = false })
+            displayRecipes(DATA)
 
-            // on récupère tous les mots des recettes qui sont uniquement en display = true
-            displayIngrediantDataIfTrue(DATA, words)
-
-
-            // on retire les doublons
-            const filteredArray = removeDuplicateItemInArray(words)
-            const wordsToDisplay = []
-
-            // on le remplie l'optionContainer
-            filteredArray.forEach(word => {
-                if (word.toLowerCase().indexOf(taping) >= 0) {
-                    wordsToDisplay.push(word)
-                }
-            })
-
-            listElmtIng.innerHTML = ''
-            wordsToDisplay.forEach(word => {
-                listElmtIng.innerHTML += `<li class="elmt" id="${word}">${word}</li>`;
-            });
-
-        } else {
-
-            // si y'a moins de 2 caractères
-            const words = []
-
-            // on récupère tous les mots des recettes qui sont uniquement en display = true
-            displayIngrediantDataIfTrue(DATA, words)
-
-
-            // on retire les doublons
-            const filteredArray = removeDuplicateItemInArray(words)
-            listElmtIng.innerHTML = ""
-
-            // on le remplie l'optionContainer
-            filteredArray.forEach(word => {
-                    listElmtIng.innerHTML += `<li class="elmt" id="${word}">${word}</li>`
-                })
-                // displayRecipes(DATA)
-        }
-    })
-
-    inputMain.addEventListener('keydown', (e) => {
-        if (e.keyCode == 13) {
-            const selectedTag = e.target.innerHTML
-            const tag = createTag(e.target.innerHTML, "Ustensiles")
-            zoneTag.innerHTML += tag
-
-            // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
+            // chercher dans les ingredients
             for (let i = 0; i < DATA.length; i++) {
                 const recipe = DATA[i]
-                console.log(DATA[i]);
-                // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
-                if (recipe.display == true) {
-                    for (let j = 0; j < recipe.ustensils.length; j++) {
-                        const ustensile = recipe.ustensils[j]
-                        console.log(recipe.ustensils[j]);
-                        if (ustensile.toLowerCase() === selectedTag.toLowerCase()) {
-                            recipe.display = true
-                            break
-                        } else {
-                            recipe.display = false
-                        }
+                    // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+                for (let j = 0; j < recipe.ingredients.length; j++) {
+                    const ingredient = recipe.ingredients[j]
+                    if (ingredient.ingredient.toLowerCase().includes(mainInputValue)) {
+                        recipe.display = true
+                        break
+                    } else {
+                        recipe.display = false
                     }
                 }
+
+                // chercher dans les ustencils
+                for (let j = 0; j < recipe.ustensils.length; j++) {
+                    const ustensil = recipe.ustensils[j]
+                    if (ustensil.toLowerCase().includes(mainInputValue)) {
+                        recipe.display = true
+                        break
+                    } else {
+                        recipe.display = false
+                    }
+                }
+
+                // chercher dans les appareils
+                const appliance = recipe.appliance
+                if (appliance.toLowerCase().includes(mainInputValue)) {
+                    recipe.display = true
+                } else {
+                    recipe.display = false
+                }
+
+                // chercher dans les descriptions
+                const description = recipe.description
+                if (description.toLowerCase().includes(mainInputValue)) {
+                    recipe.display = true
+                } else {
+                    recipe.display = false
+                }
+
             }
-            displayRecipes(DATA)
+        } else {
+            // on affiche toutes les cards => display:true
+            DATA.forEach(recipe => { recipe.display = true })
         }
-
+        displayRecipes(DATA)
     })
-
 }
