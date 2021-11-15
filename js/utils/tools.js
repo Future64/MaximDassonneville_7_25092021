@@ -1,5 +1,7 @@
 import { createCardsForDom } from "../components/view/card.js"
 import { createDropdown } from "../components/view/dropdown.js"
+import { refresh } from "../components/refreshRecipe.js"
+import { DATA } from "../../data/dataHandler.js"
 
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
 //                          FONCTIONS UTILES DU PROJET
@@ -124,8 +126,9 @@ export let displayAppareilDataIfTrue = (data, tab) => {
 
 /*®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®®*/
 
-export const deleteTag = () => {
+export const deleteTag = (DATA) => {
     const tags = document.querySelectorAll('.tag')
+    const tagsContains = document.querySelectorAll(".tagTxt")
     tags.forEach(tag => {
         const circle = tag.querySelector(".bi-x-circle")
         circle.addEventListener("click", () => {
@@ -134,9 +137,10 @@ export const deleteTag = () => {
     })
 }
 
-
 export const tagObserver = () => {
     const zoneTag = document.querySelector('.zoneTag')
     const observer = new MutationObserver(deleteTag)
+    const observer2 = new MutationObserver(refresh)
     observer.observe(zoneTag, { childList: true })
+    observer2.observe(zoneTag, { childList: true })
 }

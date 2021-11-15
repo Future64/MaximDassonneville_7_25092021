@@ -24,13 +24,13 @@ export const dropDownAppareilListener = () => {
     dropdownContainer.addEventListener('click', () => {
         const app = []
 
-        // on récupère tous les ingrédients des uniquement ustensils qui sont en display = true
+        // on récupère tous les ingrédients des recettes qui sont  uniquement en display = true
         displayAppareilDataIfTrue(DATA, app)
 
         // on retire les doublons
         const filteredArray = removeDuplicateItemInArray(app)
 
-        // on le remplie l'optionContainer
+        // on remplie l'optionContainer
         listElmt.innerHTML = ""
         filteredArray.forEach(appareil => {
             listElmt.innerHTML += `<li class="elmt" id="${appareil}">${appareil}</li>`
@@ -51,14 +51,14 @@ export const dropDownAppareilListener = () => {
             const taping = input.value.toLowerCase();
             const app = []
 
-            // on récupère tous les ingrédients des uniquement recettes qui sont en display = true
+            // on récupère tous les ingrédients des recettes qui sont  uniquement en display = true
             displayAppareilDataIfTrue(DATA, app)
 
             // on retire les doublons
             const filteredArray = removeDuplicateItemInArray(app)
             const ingredientsToDisplay = []
 
-            // on le remplie l'optionContainer
+            // on remplie l'optionContainer
             filteredArray.forEach(appareil => {
                 if (appareil.toLowerCase().indexOf(taping) >= 0) {
                     ingredientsToDisplay.push(appareil)
@@ -75,7 +75,7 @@ export const dropDownAppareilListener = () => {
             // si y'a moins de 2 caractères
             const app = []
 
-            // on récupère tous les ingrédients des uniquement recettes qui sont en display = true
+            // on récupère tous les ingrédients des recettes qui sont  uniquement en display = true
             displayAppareilDataIfTrue(DATA, app)
 
 
@@ -83,7 +83,7 @@ export const dropDownAppareilListener = () => {
             const filteredArray = removeDuplicateItemInArray(app)
             listElmt.innerHTML = ""
 
-            // on le remplie l'optionContainer
+            // on remplie l'optionContainer
             filteredArray.forEach(appareil => {
                 listElmt.innerHTML += `<li class="elmt" id="${appareil}">${appareil}</li>`
             })

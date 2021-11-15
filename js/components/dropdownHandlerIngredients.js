@@ -116,4 +116,5 @@ export const dropDownIngredientsListener = () => {
         }
         displayRecipes(DATA)
     })
+
 }
