@@ -58,13 +58,16 @@ export const InputMainListener = () => {
                 }
 
                 // chercher dans les descriptions
+                const titre = recipe.name
                 const description = recipe.description
-                if (description.toLowerCase().includes(mainInputValue)) {
+
+                if (titre.toLowerCase().includes(mainInputValue)) {
+                    recipe.display = true
+                } else if (description.toLowerCase().includes(mainInputValue)) {
                     recipe.display = true
                 } else {
                     recipe.display = false
                 }
-
             }
         } else {
             // on affiche toutes les cards => display:true
