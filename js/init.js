@@ -3,11 +3,9 @@ import { InputMainListener } from './components/inputMainHandler.js';
 import { dropDownIngredientsListener } from "./components/dropdownHandlerIngredients.js"
 import { dropDownUstansilsListener } from "./components/dropdownHandlerUstansils.js"
 import { dropDownAppareilListener } from "./components/dropdownHandlerAppareils.js"
-import { refresh } from "./components/refreshRecipe.js"
-import { displayDropdown, displayRecipes, removeRecipes, deleteTag, tagObserver } from './utils/tools.js';
+import { displayDropdown, displayRecipes, tagObserver } from './utils/tools.js';
 
-const init = () => {
-
+function init() {
     displayRecipes(DATA);
     displayDropdown()
     InputMainListener()
