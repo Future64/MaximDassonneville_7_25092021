@@ -38,7 +38,6 @@ export const removeRecipes = (data) => {
     data.forEach(recipe => {
         if (recipe.display == false) {
             const card = createCardsForDom(recipe)
-                // zoneCards.append(card)
             zoneCards.innerHTML = ""
         }
     });

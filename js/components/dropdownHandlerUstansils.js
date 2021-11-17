@@ -62,7 +62,7 @@ export const dropDownUstansilsListener = () => {
 
             // on le remplie l'optionContainer
             filteredArray.forEach(ustensil => {
-                if (ustensil.toLowerCase().indexOf(taping) >= 0) {
+                if (ustensil.toLowerCase().includes(taping)) {
                     ingredientsToDisplay.push(ustensil)
                 }
             })

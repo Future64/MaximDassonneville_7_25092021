@@ -61,7 +61,7 @@ export const dropDownIngredientsListener = () => {
 
             // on le remplie l'optionContainer
             filteredArray.forEach(ingredient => {
-                if (ingredient.toLowerCase().indexOf(taping) >= 0) {
+                if (ingredient.toLowerCase().includes(taping)) {
                     ingredientsToDisplay.push(ingredient)
                 }
             })

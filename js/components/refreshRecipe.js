@@ -18,8 +18,6 @@ export const refresh = () => {
                     const ingredient = recipe.ingredients[j]
 
                     if (ingredient.ingredient.toLowerCase().includes(tag.children[0].textContent.toLowerCase())) {
-                        // if (ingredient.ingredient.toLowerCase().indexOf(tag.children[0].textContent.toLowerCase()) >= 0) {
-
                         recipe.display = true
                         break
                     } else {

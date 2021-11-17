@@ -30,6 +30,7 @@ export const InputMainListener = () => {
                     // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
                 for (let j = 0; j < recipe.ingredients.length; j++) {
                     const ingredient = recipe.ingredients[j]
+
                     if (ingredient.ingredient.toLowerCase().includes(mainInputValue)) {
                         recipe.display = true
                         break
@@ -41,6 +42,7 @@ export const InputMainListener = () => {
                 // chercher dans les ustencils
                 for (let j = 0; j < recipe.ustensils.length; j++) {
                     const ustensil = recipe.ustensils[j]
+
                     if (ustensil.toLowerCase().includes(mainInputValue)) {
                         recipe.display = true
                         break
