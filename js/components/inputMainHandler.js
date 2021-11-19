@@ -1,7 +1,6 @@
 // import { createDomElement } from "../utils/tools.js"
 import { DATA } from "../../data/dataHandler.js"
-import { displayRecipes, removeDuplicateItemInArray, removeDuplicateItemInArrayUstensils, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue, removeRecipes, deleteTag, tagObserver } from "../utils/tools.js"
-import { createTag } from "./view/tag.js"
+import { displayRecipes } from "../utils/tools.js"
 
 
 

@@ -1,6 +1,6 @@
 // import { createDomElement } from "../utils/tools.js"
 import { DATA } from "../../data/dataHandler.js"
-import { displayRecipes, removeDuplicateItemInArray, removeDuplicateItemInArrayUstensils, displayContentsDropdown, displayIngrediantDataIfTrue, displayUstansilDataIfTrue, displayAppareilDataIfTrue, removeRecipes, deleteTag, tagObserver } from "../utils/tools.js"
+import { displayRecipes, removeDuplicateItemInArray, displayContentsDropdown, displayIngrediantDataIfTrue } from "../utils/tools.js"
 import { createTag } from "../components/view/tag.js"
 
 
@@ -116,5 +116,4 @@ export const dropDownIngredientsListener = () => {
         }
         displayRecipes(DATA)
     })
-
 }
