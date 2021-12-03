@@ -99,23 +99,20 @@ export const dropDownUstansilsListener = () => {
         zoneTag.innerHTML += tag
 
         // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
-        for (let i = 0; i < DATA.length; i++) {
-            const recipe = DATA[i]
-            console.log(DATA[i]);
-            // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+        DATA.some(recipe => {
             if (recipe.display == true) {
-                for (let j = 0; j < recipe.ustensils.length; j++) {
-                    const ustensile = recipe.ustensils[j]
-                    console.log(recipe.ustensils[j]);
-                    if (ustensile.toLowerCase() === selectedTag.toLowerCase()) {
+                recipe.ustensils.some(u => {
+
+                    // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+                    if (u.toLowerCase() === selectedTag.toLowerCase()) {
                         recipe.display = true
-                        break
+                        return true
                     } else {
                         recipe.display = false
                     }
-                }
+                })
             }
-        }
+        })
         displayRecipes(DATA)
     })
 }

@@ -10,7 +10,9 @@ export const refresh = () => {
 
     if (tagsIng !== null) {
         tagsIng.forEach(tag => {
+
             for (let i = 0; i < DATA.length; i++) {
+
                 const recipe = DATA[i]
 
                 // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée

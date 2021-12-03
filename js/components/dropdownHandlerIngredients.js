@@ -99,21 +99,21 @@ export const dropDownIngredientsListener = () => {
         zoneTag.innerHTML += tag
 
         // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
-        for (let i = 0; i < DATA.length; i++) {
-            const recipe = DATA[i]
-                // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+        DATA.some(recipe => {
             if (recipe.display == true) {
-                for (let j = 0; j < recipe.ingredients.length; j++) {
-                    const ingredient = recipe.ingredients[j]
-                    if (ingredient.ingredient.toLowerCase() === selectedTag.toLowerCase()) {
+                recipe.ingredients.some(ingr => {
+
+                    // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+                    if (ingr.ingredient.toLowerCase() === selectedTag.toLowerCase()) {
                         recipe.display = true
-                        break
+                        return true
                     } else {
                         recipe.display = false
                     }
-                }
+                })
             }
-        }
+        })
+
         displayRecipes(DATA)
     })
 }

@@ -97,6 +97,7 @@ export const dropDownAppareilListener = () => {
         const tag = createTag(e.target.innerHTML, "Appareil")
         zoneTag.innerHTML += tag
 
+
         // modifier les data pour mettre a display false les recettes qui n'ont pas le e.target.innerHTML (tag) pour chaque recette
         for (let i = 0; i < DATA.length; i++) {
             const recipe = DATA[i]

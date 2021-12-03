@@ -3,8 +3,6 @@ import { DATA } from "../../data/dataHandler.js"
 import { displayRecipes } from "../utils/tools.js"
 
 
-
-
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
 //                                  INPUT MAIN
 /*‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ */
@@ -24,36 +22,33 @@ export const InputMainListener = () => {
             displayRecipes(DATA)
 
             // chercher dans les ingredients
-            for (let i = 0; i < DATA.length; i++) {
-                const recipe = DATA[i]
-                    // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
-                for (let j = 0; j < recipe.ingredients.length; j++) {
-                    const ingredient = recipe.ingredients[j]
+            DATA.some(recipe => {
 
+                // on va vérifier chaque ingrédient des recettes qui sont déjà affichée/sélèctionnée
+                recipe.ingredients.some(ingredient => {
                     if (ingredient.ingredient.toLowerCase().includes(mainInputValue)) {
                         recipe.display = true
-                        break
+                        return true
                     } else {
                         recipe.display = false
                     }
-                }
+                })
 
-                // chercher dans les ustencils
-                for (let j = 0; j < recipe.ustensils.length; j++) {
-                    const ustensil = recipe.ustensils[j]
-
+                // chercher dans les ustencils      
+                recipe.ustensils.some(ustensil => {
                     if (ustensil.toLowerCase().includes(mainInputValue)) {
                         recipe.display = true
-                        break
+                        return true
                     } else {
                         recipe.display = false
                     }
-                }
+                })
 
                 // chercher dans les appareils
                 const appliance = recipe.appliance
                 if (appliance.toLowerCase().includes(mainInputValue)) {
                     recipe.display = true
+                    return true
                 } else {
                     recipe.display = false
                 }
@@ -61,15 +56,16 @@ export const InputMainListener = () => {
                 // chercher dans les descriptions
                 const titre = recipe.name
                 const description = recipe.description
-
                 if (titre.toLowerCase().includes(mainInputValue)) {
                     recipe.display = true
                 } else if (description.toLowerCase().includes(mainInputValue)) {
                     recipe.display = true
+                    return true
                 } else {
                     recipe.display = false
                 }
-            }
+            })
+
         } else {
             // on affiche toutes les cards => display:true
             DATA.forEach(recipe => { recipe.display = true })
