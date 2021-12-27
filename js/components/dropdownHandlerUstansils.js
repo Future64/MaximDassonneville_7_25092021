@@ -49,7 +49,7 @@ export const dropDownUstansilsListener = () => {
 
         // Si il y a plus de 2 caractères
         if (input.value.length > 2) {
-            const taping = input.value.toLowerCase();
+            const taping = input.value.toLowerCase()
             const ust = []
 
             // on récupère tous les ingrédients des uniquement recettes qui sont en display = true
