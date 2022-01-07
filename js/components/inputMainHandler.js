@@ -19,7 +19,7 @@ export const InputMainListener = () => {
         // Si il y a plus de 2 caractères
         if (inputMain.value.length > 2) {
             for (let i = 0; i < DATA.length; i++) {
-                const recipe = DATA[i]
+                const recipe = DATA[i];
                 recipe.display = false
             }
 
